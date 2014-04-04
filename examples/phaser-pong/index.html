@@ -4,8 +4,16 @@
 
 <head>
     <meta charset="UTF-8" />
-        <script src="phaser.js"></script>
-        <script type="text/javascript">
+
+        <!-- paths to js libs -->
+        <script src="js/phaser.min.js"></script>
+
+        <!-- paths to game logic -->
+
+</head>
+<body>
+
+<script type="text/javascript">
     var game = new Phaser.Game(480, 640, Phaser.AUTO, '', { preload: preload, create: create, update: update });
     function preload() {
         game.load.image('bet', 'assets/bet.png');
@@ -13,15 +21,14 @@
         game.load.image('background', 'assets/background.jpg');
     }
     function create() {
+
         game.add.tileSprite(0, 0, 480, 640, 'background');
+
     }
 
     function update () {
     }
 </script>
-</head>
-
-<body>
 
 </body>
 </html>
