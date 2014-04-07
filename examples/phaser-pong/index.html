@@ -42,10 +42,11 @@
         ball.body.collideWorldBounds = true;
         ball.body.bounce.setTo(1, 1);
 
-        game.input.onDown.add(releaseBall, this);
+       // game.input.onDown.add(releaseBall, this);
     }
 
 function update () {
+    /*
         //Control the player's racket
         playerBet.x = game.input.x;
 
@@ -72,6 +73,7 @@ function update () {
 
         //Check to see if someone has scored a goal
         checkGoal();
+        */
 
     }
 
@@ -84,6 +86,7 @@ function update () {
 
         return bet;
     }
+    /*
 
 var ballReleased = false;
 
@@ -119,7 +122,7 @@ var ballReleased = false;
             setBall();
         }
     }
-
+*/
     function setBall() {
         if (ballReleased) {
             ball.x = game.world.centerX;
