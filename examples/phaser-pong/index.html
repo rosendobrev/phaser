@@ -35,7 +35,7 @@
         game.add.tileSprite(0, 0, 480, 640, 'background');
 
         playerBet = createBet(game.world.centerX, 600);
-        computerBet = createBet(game.world.centerX, 20);
+        computerBet = createBet(game.world.centerX, 200);
 
         ball = game.add.sprite(game.world.centerX, game.world.centerY, 'ball');
         ball.anchor.setTo(0.5, 0.5);
@@ -122,7 +122,7 @@ var ballReleased = false;
             setBall();
         }
     }
-*/
+
     function setBall() {
         if (ballReleased) {
             ball.x = game.world.centerX;
@@ -132,7 +132,7 @@ var ballReleased = false;
             ballReleased = false;
         }
     }
-
+*/
 </script>
 
 </body>
