@@ -29,6 +29,8 @@
     function releaseBall() {
         
         if (!ballReleased) {
+            ball.x = game.world.centerX;
+            ball.y = game.world.centerY;
             ball.body.velocity.x = ballSpeed;
             ball.body.velocity.y = -ballSpeed;
             ballReleased = true;
@@ -61,12 +63,12 @@
 
     function checkGoal(){
         if(ball.y < 15){
-            setBall();
+            releaseBall();
         }else if(ball.y > 625){
-            setBall();
+            releaseBall();
         }
     }
-
+/*
     function setBall(){
         if(ballReleased){
             ball.x = game.world.centerX;
@@ -75,7 +77,7 @@
             releaseBall();
         }
     }
-
+*/
     var game = new Phaser.Game(480, 640, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
     function preload() {
