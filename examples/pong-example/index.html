@@ -59,6 +59,41 @@
         return pad;
     }
     
+    function ballHitsBet(_bet, _ball){
+        var diff = 0;
+
+        if (_ball.x < _bet.x) {
+            //If ball is in the left hand side on the racket
+            diff = _bet.x - _ball.x;
+            _ball.body.velocity.x = (-10 * diff);
+        } else if (_ball.x > _bet.x) {
+            //If ball is in the right hand side on the racket
+            diff = _ball.x -_bet.x;
+            _ball.body.velocity.x = (10 * diff);
+        } else {
+            //The ball hit the center of the racket, let's add a little bit of a tragic accident(random) of his movement
+            _ball.body.velocity.x = 2 + Math.random() * 8;
+        }
+    }
+
+    function checkGoal(){
+        if(ball.y < 15){
+            setBall();
+        }else if(ball.y > 625){
+            setBall();
+        }
+    }
+
+    function setBall(){
+        if(ballReleased){
+            ball.x = game.world.centerX;
+            ball.y = game.world.centerY;
+            ball.body.velocity.x = 0;
+            ball.body.velocity.y = 0;
+            ballReleased = false;
+        }
+    }
+
     var game = new Phaser.Game(480, 640, Phaser.AUTO, '', { preload: preload, create: create, update: update });
     function preload() {
         game.load.image('pad', 'res/pad.png');
@@ -117,6 +152,9 @@
         
         /* collide ball with cpu pad*/
         game.physics.arcade.collide(ball, cpuPad);
+
+        //check to see if someone has scored a goal
+        checkGoal();
     }
     
 </script>
