@@ -21,7 +21,7 @@
     var cpuSpeed = 190;
     
     /* ball speed */
-    var ballSpeed = 10;
+    var ballSpeed = 300;
     
     /* ball is moving or not */
     var ballReleased = false;
@@ -58,24 +58,7 @@
         
         return pad;
     }
-/*
-    function ballHitsBet(_bet, _ball){
-        var diff = 0;
 
-        if (_ball.x < _bet.x) {
-            //If ball is in the left hand side on the racket
-            diff = _bet.x - _ball.x;
-            _ball.body.velocity.x = (-10 * diff);
-        } else if (_ball.x > _bet.x) {
-            //If ball is in the right hand side on the racket
-            diff = _ball.x -_bet.x;
-            _ball.body.velocity.x = (10 * diff);
-        } else {
-            //The ball hit the center of the racket, let's add a little bit of a tragic accident(random) of his movement
-            _ball.body.velocity.x = 2 + Math.random() * 8;
-        }
-    }
-*/
     function checkGoal(){
         if(ball.y < 15){
             setBall();
@@ -88,8 +71,7 @@
         if(ballReleased){
             ball.x = game.world.centerX;
             ball.y = game.world.centerY;
-            ball.body.velocity.x = 0;
-            ball.body.velocity.y = 0;
+            releaseBall();
             ballReleased = false;
         }
     }
