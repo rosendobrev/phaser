@@ -34,13 +34,15 @@
     function create() {
         game.add.tileSprite(0, 0, 480, 640, 'background');
 
-        //playerBet = createBet(game.world.centerX, 600);
-        computerBet = createBet(game.world.centerX, 200);
+        playerBet = createBet(game.world.centerX, 600);
 
         ball = game.add.sprite(game.world.centerX, game.world.centerY, 'ball');
         ball.anchor.setTo(0.5, 0.5);
         ball.body.collideWorldBounds = true;
         ball.body.bounce.setTo(1, 1);
+
+
+        computerBet = createBet(game.world.centerX, 20);
 
        // game.input.onDown.add(releaseBall, this);
     }
