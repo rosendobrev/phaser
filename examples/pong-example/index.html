@@ -59,8 +59,11 @@
     }
 
     function checkGoal(){
-        if(ball.y < 15 || ball.y > 625)
-            setBall();
+        if(ball.y < 15 || ball.y > 625){
+           // setBall();
+            ball.reset(game.world.centerX, game.world.centerY);
+            ballReleased = false;
+        }
     }
 
     function setBall(){
@@ -135,6 +138,7 @@
 
         //check to see if someone has scored a goal
         checkGoal();
+
     }
     
 </script>
