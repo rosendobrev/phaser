@@ -21,7 +21,7 @@
     var cpuSpeed = 190;
     
     /* ball speed */
-    var ballSpeed = 300;
+    var ballSpeed = 10;
     
     /* ball is moving or not */
     var ballReleased = false;
@@ -95,6 +95,7 @@
     }
 
     var game = new Phaser.Game(480, 640, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
     function preload() {
         game.load.image('pad', 'res/pad.png');
         game.load.image('ball', 'res/ball.png');
