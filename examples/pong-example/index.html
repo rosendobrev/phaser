@@ -59,11 +59,8 @@
     }
 
     function checkGoal(){
-        if(ball.y < 15){
+        if(ball.y < 15 || ball.y > 625)
             setBall();
-        }else if(ball.y > 625){
-            setBall();
-        }
     }
 
     function setBall(){
