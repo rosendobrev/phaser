@@ -11,17 +11,15 @@
 
         <!-- paths to game logic -->
 
-</head>
-
-<body>
-
-<script type="text/javascript">
+    <script type="text/javascript">
     var playerBet;
     var computerBet;
     var ball;
 
     var computerBetSpeed = 190;
     var ballSpeed = 300;
+
+    var ballReleased = false;
 
     var game = new Phaser.Game(480, 640, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
@@ -33,7 +31,7 @@
 
     function create() {
         game.add.tileSprite(0, 0, 480, 640, 'background');
-/*
+
         playerBet = createBet(game.world.centerX, 600);
         computerBet = createBet(game.world.centerX, 20);
 
@@ -41,19 +39,12 @@
         ball.anchor.setTo(0.5, 0.5);
         ball.body.collideWorldBounds = true;
         ball.body.bounce.setTo(1, 1);
-*/
+
        // game.input.onDown.add(releaseBall, this);
     }
 
 function update () {
 
-        playerBet = createBet(game.world.centerX, 600);
-        computerBet = createBet(game.world.centerX, 20);
-
-        ball = game.add.sprite(game.world.centerX, game.world.centerY, 'ball');
-        ball.anchor.setTo(0.5, 0.5);
-        ball.body.collideWorldBounds = true;
-        ball.body.bounce.setTo(1, 1);
 
     /*
         //Control the player's racket
@@ -97,7 +88,6 @@ function update () {
     }
     /*
 
-var ballReleased = false;
 
     function releaseBall() {
         if (!ballReleased) {
@@ -143,6 +133,12 @@ var ballReleased = false;
     }
 */
 </script>
+
+</head>
+
+<body>
+
+
 
 </body>
 </html>
