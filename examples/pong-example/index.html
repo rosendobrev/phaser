@@ -27,10 +27,7 @@
     var ballReleased = false;
     
     function releaseBall() {
-        
         if (!ballReleased) {
-            ball.x = game.world.centerX;
-            ball.y = game.world.centerY;
             ball.body.velocity.x = ballSpeed;
             ball.body.velocity.y = -ballSpeed;
             ballReleased = true;
@@ -63,21 +60,23 @@
 
     function checkGoal(){
         if(ball.y < 15){
-            releaseBall();
+            setBall();
         }else if(ball.y > 625){
-            releaseBall();
+            setBall();
         }
     }
-/*
+
     function setBall(){
         if(ballReleased){
             ball.x = game.world.centerX;
             ball.y = game.world.centerY;
+            ball.body.velocity.x = ballSpeed;
+            ball.body.velocity.y = -ballSpeed;
             ballReleased = false;
-            releaseBall();
+           // releaseBall();
         }
     }
-*/
+
     var game = new Phaser.Game(480, 640, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
     function preload() {
