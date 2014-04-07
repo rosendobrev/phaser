@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <script src="js/phaser.min.js"></script>
+</head>
+    
+<body>
+<script type="text/javascript">
+    
+    /* player pad */
+    var playerPad;
+    
+    /* computer pad */
+    var cpuPad;
+    
+    /* ball */
+    var ball;
+    
+    /* computer pad speed */
+    var cpuSpeed = 190;
+    
+    /* ball speed */
+    var ballSpeed = 300;
+    
+    /* ball is moving or not */
+    var ballReleased = false;
+    
+    function releaseBall() {
+        
+        if (!ballReleased) {
+            ball.body.velocity.x = ballSpeed;
+            ball.body.velocity.y = -ballSpeed;
+            ballReleased = true;
+        }
+    }
+    
+    /* create pad at given position */
+    function createPad(x, y) {
+        
+        /* create the pad sprite and add it to the scene */
+        var pad = game.add.sprite(x, y, 'pad');
+        
+        /* set the pad anchor point to its center */
+        pad.anchor.setTo(0.5, 0.5);
+        
+        /* enable object physics behaviour */
+        game.physics.arcade.enable(pad);
+        
+        /* the pad should colide with world bounds */
+        pad.body.collideWorldBounds = true;
+        
+        /* things bounce of from pad */
+        pad.body.bounce.setTo(1, 1);
+        
+        /* pad is immovable for now */
+        pad.body.immovable = true;
+        
+        return pad;
+    }
+    
+    var game = new Phaser.Game(480, 640, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+    function preload() {
+        game.load.image('pad', 'res/pad.png');
+        game.load.image('ball', 'res/ball.png');
+        game.load.image('background', 'res/background.jpg');
+    }
+    
+    function create() {
+        
+        /* add game background */
+        game.add.tileSprite(0, 0, 480, 640, 'background');
+        
+        /* add player pad */
+        playerPad = createPad(game.world.centerX, 600);
+        
+        /* add cpu pad */
+        cpuPad = createPad(game.world.centerX, 100);
+        
+        
+        /* add ball to the scene*/
+        ball = game.add.sprite(game.world.centerX, game.world.centerY, 'ball');
+        
+        /* enable ball physic behaviour */
+        game.physics.arcade.enable(ball);
+        ball.anchor.setTo(0.5, 0.5);
+        ball.body.collideWorldBounds = true;
+        ball.body.bounce.setTo(1,1);
+        
+        /* add on click event */
+        game.input.onDown.add(releaseBall, this);
+    }
+
+    function update () {
+        
+        /* moves on click */
+        if (game.input.mousePointer.isDown)
+        {
+            game.physics.arcade.moveToPointer(playerPad, 400);
+            
+            if (Phaser.Rectangle.contains(playerPad.body, game.input.x, game.input.y))
+                playerPad.body.velocity.setTo(0, 0);
+        }
+        else
+            playerPad.body.velocity.setTo(0, 0);
+
+        /* cpu pad motion */
+        if (cpuPad.x - ball.x < -25)
+            cpuPad.body.velocity.x = cpuSpeed;
+        else if (cpuPad.x - ball.x > 25)
+            cpuPad.body.velocity.x = -cpuSpeed;
+        else
+            cpuPad.body.velocity.x = 0;
+        
+        /* collide ball with player pad */
+        game.physics.arcade.collide(ball, playerPad);
+        
+        /* collide ball with cpu pad*/
+        game.physics.arcade.collide(ball, cpuPad);
+    }
+    
+</script>
+
+</body>
+</html>
