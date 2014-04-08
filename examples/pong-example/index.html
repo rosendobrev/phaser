@@ -144,14 +144,14 @@
         game.physics.arcade.collide(ball, playerPad, ballHitPad, null, this);
         
         /* collide ball with cpu pad*/
-        game.physics.arcade.collide(ball, cpuPad, ballHitPaddle, null, this);
+        game.physics.arcade.collide(ball, cpuPad, ballHitPad, null, this);
 
         //check to see if someone has scored a goal
         checkGoal();
 
     }
     
-function ballHitPaddle (_ball, _paddle) {
+function ballHitPad (_ball, _paddle) {
 
     var diff = 0;
 
