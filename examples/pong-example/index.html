@@ -18,7 +18,7 @@
     var ball;
     
     /* computer pad speed */
-    var cpuSpeed = 190;
+    var cpuSpeed = 400;
     
     /* ball speed */
     var ballSpeed = 300;
@@ -114,7 +114,7 @@
         /* moves on click */
         if (game.input.mousePointer.isDown)
         {
-            game.physics.arcade.moveToPointer(playerPad, 400);
+            game.physics.arcade.moveToPointer(playerPad, 600);
             
             if (Phaser.Rectangle.contains(playerPad.body, game.input.x, game.input.y))
                 playerPad.body.velocity.setTo(0, 0);
