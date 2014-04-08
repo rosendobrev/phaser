@@ -129,16 +129,16 @@
         else
             playerPad.body.velocity.setTo(0, 0);
 */
-        /* cpu pad motion
+        /* cpu pad motion */
         if (cpuPad.x - ball.x < -25)
             cpuPad.body.velocity.x = cpuSpeed;
         else if (cpuPad.x - ball.x > 25)
             cpuPad.body.velocity.x = -cpuSpeed;
         else
             cpuPad.body.velocity.x = 0;
-        */
+
         /* cpuPad motion 2 */
-        cpuPad.body.x = ball.body.x - 10;
+       // cpuPad.body.x = ball.body.x - 10;
         
         /* collide ball with player pad */
         game.physics.arcade.collide(ball, playerPad, ballHitPad, null, this);
