@@ -23,12 +23,12 @@ function preload(){
     game.load.image('background', 'assets/background.jpg');
 }
 
-function create(){
+function create(){/*
     game.phisics.startSystem(Phaser.Phisics.ARCADE);
     game.phisics.arcade.checkCollision.down = false;
-
+*/
     s = game.add.tileSprite(0, 0, 680, 480, 'background');
-
+/*
     bricks = game.add.group();
     bricks.enableBody = true;
     bricks.phisicsBodyType = Phaser.Phisics.ARCADE;
@@ -68,9 +68,9 @@ function create(){
     introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
     game.input.onDown.add(releaseBall, this);
 
-
+*/
 }
-function update(){
+function update(){/*
     paddle.body.x = game.input.x;
 
     if (paddle.x < 24)
@@ -87,7 +87,7 @@ function update(){
     }else{
         game.physics.arcade.collide(ball, paddle, ballHitPaddle, null, this);
         game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
-    }
+    }*/
 }
 
 function releaseBall(){
