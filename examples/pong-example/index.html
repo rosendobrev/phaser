@@ -18,7 +18,7 @@
     var ball;
     
     /* computer pad speed */
-    var cpuSpeed = 600;
+    var cpuSpeed = 250;
     
     /* ball speed */
     var ballSpeed = 200;
@@ -138,19 +138,44 @@
             cpuPad.body.velocity.x = 0;
         */
         /* cpuPad motion 2 */
-        cpuPad.body.x = ball.body.x - 20;
+        cpuPad.body.x = ball.body.x - 10;
         
         /* collide ball with player pad */
-        game.physics.arcade.collide(ball, playerPad);
+        game.physics.arcade.collide(ball, playerPad, ballHitPad, null, this);
         
         /* collide ball with cpu pad*/
-        game.physics.arcade.collide(ball, cpuPad);
+        game.physics.arcade.collide(ball, cpuPad, ballHitPaddle, null, this);
 
         //check to see if someone has scored a goal
         checkGoal();
 
     }
     
+function ballHitPaddle (_ball, _paddle) {
+
+    var diff = 0;
+
+    if (_ball.x < _paddle.x)
+    {
+        //  Ball is on the left-hand side of the paddle
+        diff = _paddle.x - _ball.x;
+        _ball.body.velocity.x = (-10 * diff);
+    }
+    else if (_ball.x > _paddle.x)
+    {
+        //  Ball is on the right-hand side of the paddle
+        diff = _ball.x -_paddle.x;
+        _ball.body.velocity.x = (10 * diff);
+    }
+    else
+    {
+        //  Ball is perfectly in the middle
+        //  Add a little random X to stop it bouncing straight up!
+        _ball.body.velocity.x = 2 + Math.random() * 8;
+    }
+
+}
+
 </script>
 
 </body>
