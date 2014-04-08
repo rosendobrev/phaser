@@ -1,11 +1,11 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO,'', {preload: preload, create: create, update: update});
+var game = new Phaser.Game(680, 480, Phaser.AUTO, '', {preload: preload, create: create, update: update });
 /* variables for ball, pad and bricks */
 var ball;
 var paddle;
 var bricks;
 
 /* boolen variable if ball is on the pad */
-var balllOnPaddle = true;
+var ballOnPaddle = true;
 
 /* variables for lives and score */
 var lives = 3;
@@ -22,10 +22,12 @@ var s;
 function preload(){
     game.load.image('background', 'assets/background.jpg');
 }
+
 function create(){
     game.phisics.startSystem(Phaser.Phisics.ARCADE);
     game.phisics.arcade.checkCollision.down = false;
-    s = game.add.tileSprite(0, 0, 800, 600, 'background');
+
+    s = game.add.tileSprite(0, 0, 680, 480, 'background');
 
     bricks = game.add.group();
     bricks.enableBody = true;
@@ -41,7 +43,7 @@ function create(){
         }
     }
 
-    paddle = game.add.sprite(game.world.centerX, 500, 'paddle.png');
+    paddle = game.add.sprite(game.world.centerX, 300, 'paddle.png');
     paddle.anchor.setTo(0.5, 0.5);
 
     game.physics.enable(paddle, Phaser.Phisics.ARCADE);
@@ -61,8 +63,8 @@ function create(){
 
     ball.events.onOutOfBounds.add(ballLost, this);
 
-    scoreText = game.add.text(32, 550, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
-    livesText = game.add.text(680, 550, 'lives: 3', { font: "20px Arial", fill: "#ffffff", align: "left" });
+    scoreText = game.add.text(32, 480, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+    livesText = game.add.text(680, 480, 'lives: 3', { font: "20px Arial", fill: "#ffffff", align: "left" });
     introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
     game.input.onDown.add(releaseBall, this);
 
@@ -84,7 +86,7 @@ function update(){
         ball.body.x = paddle.x;
     }else{
         game.physics.arcade.collide(ball, paddle, ballHitPaddle, null, this);
-        game.physics.arcade.collide(ball, paddle, ballHitBricks, null, this);
+        game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
     }
 }
 
