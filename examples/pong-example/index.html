@@ -21,7 +21,7 @@
     var cpuSpeed = 600;
     
     /* ball speed */
-    var ballSpeed = 300;
+    var ballSpeed = 200;
     
     /* ball is moving or not */
     var ballReleased = false;
@@ -109,8 +109,15 @@
     }
 
     function update () {
+        playerPad.body.x = game.input.x;
         
-        /* moves on click */
+        if(playerPad.x < 24){
+            playerPad.x = 24;
+        }else if(playerPad.x > game.width-24){
+            playerPad.x = game.width-24;
+        }
+/*
+        /* moves on click
         if (game.input.mousePointer.isDown)
         {
             game.physics.arcade.moveToPointer(playerPad, 700);
@@ -120,7 +127,7 @@
         }
         else
             playerPad.body.velocity.setTo(0, 0);
-
+*/
         /* cpu pad motion */
         if (cpuPad.x - ball.x < -25)
             cpuPad.body.velocity.x = cpuSpeed;
