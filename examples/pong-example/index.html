@@ -18,7 +18,7 @@
     var ball;
     
     /* computer pad speed */
-    var cpuSpeed = 400;
+    var cpuSpeed = 600;
     
     /* ball speed */
     var ballSpeed = 300;
@@ -94,8 +94,7 @@
         
         /* add cpu pad */
         cpuPad = createPad(game.world.centerX, 100);
-        
-        
+
         /* add ball to the scene*/
         ball = game.add.sprite(game.world.centerX, game.world.centerY, 'ball');
         
@@ -114,7 +113,7 @@
         /* moves on click */
         if (game.input.mousePointer.isDown)
         {
-            game.physics.arcade.moveToPointer(playerPad, 600);
+            game.physics.arcade.moveToPointer(playerPad, 700);
             
             if (Phaser.Rectangle.contains(playerPad.body, game.input.x, game.input.y))
                 playerPad.body.velocity.setTo(0, 0);
