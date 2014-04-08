@@ -1,4 +1,4 @@
-var game = new Phaser.Game(480, 640, Phaser.AUTO,{preload: preload, create: create, update: update});
+var game = new Phaser.Game(800, 600, Phaser.AUTO,'', {preload: preload, create: create, update: update});
 /* variables for ball, pad and bricks */
 var ball;
 var paddle;
@@ -21,7 +21,6 @@ var s;
 
 function preload(){
     game.load.image('background', 'assets/background.jpg');
-    game.load.image();
 }
 function create(){
     game.phisics.startSystem(Phaser.Phisics.ARCADE);
