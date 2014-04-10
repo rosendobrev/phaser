@@ -1,4 +1,5 @@
 var game = new Phaser.Game(680, 480, Phaser.AUTO, '', {preload: preload, create: create, update: update });
+
 /* variables for ball, pad and bricks */
 var ball;
 var paddle;
