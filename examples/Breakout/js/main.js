@@ -56,9 +56,10 @@ function create(){
     paddle.body.bounce.set(1);
     paddle.body.immovable = true;
 */
-    ball = game.add.sprite(game.world.centerX, paddle.y - 16, 'ball.png');
+    ball = game.add.sprite(game.world.centerX, 100, 'ball.png');
     ball.anchor.set(0.5);
 /*
+paddle.y-16
     ball.checkWorldBounds = true;
 
     game.physics.enable(ball, Phaser.Physics.ARCADE);
