@@ -21,16 +21,16 @@ var introText;
 var s;
 
 function preload(){
-    /*
     game.load.image('background', 'assets/background.jpg');
 }
 
 function create(){
+    /*
     game.phisics.startSystem(Phaser.Phisics.ARCADE);
     game.phisics.arcade.checkCollision.down = false;
-
+*/
     s = game.add.tileSprite(0, 0, 680, 480, 'background');
-
+/*
     bricks = game.add.group();
     bricks.enableBody = true;
     bricks.phisicsBodyType = Phaser.Phisics.ARCADE;
