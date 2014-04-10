@@ -45,7 +45,7 @@ function create(){
         }
     }
 */
-    paddle = game.add.sprite(game.world.centerX, 400, 'paddle.png');
+    paddle = game.add.sprite(200, 400, 'paddle.png');
 /*
     paddle.anchor.setTo(0.5, 0.5);
 
