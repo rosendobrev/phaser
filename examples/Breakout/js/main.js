@@ -45,9 +45,9 @@ function create(){
         }
     }
 */
-    paddle = game.add.sprite(200, 400, 'paddle.png');
-/*
+    paddle = game.add.sprite(game.world.centerX, 400, 'paddle.png');
     paddle.anchor.setTo(0.5, 0.5);
+    /*
 
 
     game.physics.enable(paddle, Phaser.Phisics.ARCADE);
@@ -55,9 +55,10 @@ function create(){
     paddle.body.collideWorlBounds = true;
     paddle.body.bounce.set(1);
     paddle.body.immovable = true;
-
+*/
     ball = game.add.sprite(game.world.centerX, paddle.y - 16, 'ball.png');
     ball.anchor.set(0.5);
+/*
     ball.checkWorldBounds = true;
 
     game.physics.enable(ball, Phaser.Physics.ARCADE);
