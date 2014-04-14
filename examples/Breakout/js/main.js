@@ -30,7 +30,7 @@ function create(){
     //game.phisics.arcade.checkCollision.down = false;
 
     s = game.add.tileSprite(0, 0, 680, 480, 'background');
-
+/*
     bricks = game.add.group();
     bricks.enableBody = true;
     bricks.phisicsBodyType = Phaser.Phisics.ARCADE;
@@ -44,18 +44,18 @@ function create(){
             brick.body.immovable = true;
         }
     }
-
+*/
     paddle = game.add.sprite(game.world.centerX, 400, 'paddle.png');
     paddle.anchor.setTo(0.5, 0.5);
 
 
-
+/*
     game.physics.enable(paddle, Phaser.Phisics.ARCADE);
 
     paddle.body.collideWorlBounds = true;
     paddle.body.bounce.set(1);
     paddle.body.immovable = true;
-
+*/
     ball = game.add.sprite(game.world.centerX, game.world.centerY, 'ball.png');
     ball.anchor.set(0.5);
 /*
