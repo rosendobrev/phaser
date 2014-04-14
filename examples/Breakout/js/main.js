@@ -23,45 +23,48 @@ var s;
 function preload(){
     game.load.image('background', 'assets/background.jpg');
     game.load.image('ball','assets/ball.png');
-    game.load.image('pad','assets/paddle.png');
+    game.load.image('paddle','assets/paddle.png');
+    game.load.image('brick0', 'assets/brick0.png');
+    game.load.image('brick1', 'assets/brick1.png');
+    game.load.image('brick2', 'assets/brick2.png');
+    game.load.image('brick3', 'assets/brick3.png');
+    game.load.image('brick4', 'assets/brick4.png');
+    game.load.image('brick5', 'assets/brick5.png');
 }
 
 function create(){
 
-    game.phisics.startSystem(Phaser.Phisics.ARCADE);
-    game.phisics.arcade.checkCollision.down = false;
-
     s = game.add.tileSprite(0, 0, 680, 480, 'background');
-/*
+
     bricks = game.add.group();
     bricks.enableBody = true;
-    bricks.phisicsBodyType = Phaser.Phisics.ARCADE;
+    bricks.physicsBodyType = Phaser.Physics.ARCADE;
 
     var brick;
 
     for(var y = 0; y < 4; y++){
         for(var x = 0; x < 15; x++){
-            brick = bricks.create(120 + (x * 36), 100 + (y * 52), 'brick' + (y + 1) + '.png');
+            brick = bricks.create(120 + (x * 36), 100 + (y * 52), 'brick' + (y + 1));
             brick.body.bounce.set(1);
             brick.body.immovable = true;
         }
     }
-*/
-    paddle = game.add.sprite(game.world.centerX, 400, 'pad');
+
+    paddle = game.add.sprite(game.world.centerX, 400, 'paddle');
     paddle.anchor.setTo(0.5, 0.5);
 
 
-/*
-    game.physics.enable(paddle, Phaser.Phisics.ARCADE);
+
+    game.physics.enable(paddle, Phaser.Physics.ARCADE);
 
     paddle.body.collideWorlBounds = true;
     paddle.body.bounce.set(1);
     paddle.body.immovable = true;
-*/
-    ball = game.add.sprite(game.world.centerX, game.world.centerY, 'ball');
+
+    ball = game.add.sprite(paddle.body.x + 100, paddle.body.y - 10, 'ball');
     ball.anchor.set(0.5);
-/*
-paddle.y-16
+
+    paddle.y-16
     ball.checkWorldBounds = true;
 
     game.physics.enable(ball, Phaser.Physics.ARCADE);
@@ -71,15 +74,17 @@ paddle.y-16
 
     ball.events.onOutOfBounds.add(ballLost, this);
 
-    scoreText = game.add.text(32, 480, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
-    livesText = game.add.text(680, 480, 'lives: 3', { font: "20px Arial", fill: "#ffffff", align: "left" });
-    introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
+    scoreText = game.add.text(32, 30, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+    livesText = game.add.text(600, 30, 'lives: 3', { font: "20px Arial", fill: "#ffffff", align: "left" });
+    introText = game.add.text(game.world.centerX - 100, 300, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
     game.input.onDown.add(releaseBall, this);
 
-*/
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.arcade.checkCollision.down = false;
+
 }
-function update(){/*
-    paddle.body.x = game.input.x;
+function update(){
+    paddle.body.x = game.input.x - 30;
 
     if (paddle.x < 24)
     {
@@ -95,7 +100,7 @@ function update(){/*
     }else{
         game.physics.arcade.collide(ball, paddle, ballHitPaddle, null, this);
         game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
-    }*/
+    }
 }
 
 function releaseBall(){
