@@ -4,6 +4,9 @@ var game = new Phaser.Game(680, 480, Phaser.AUTO, '', {preload: preload, create:
 var ball;
 var paddle;
 var bricks;
+var brick_array = new Array(60);
+var pu = new Array();
+var powerup;
 
 /* boolen variable if ball is on the pad */
 var ballOnPaddle = true;
@@ -30,6 +33,7 @@ function preload(){
     game.load.image('brick3', 'assets/brick3.png');
     game.load.image('brick4', 'assets/brick4.png');
     game.load.image('brick5', 'assets/brick5.png');
+    game.load.image('power-up', 'assets/power-up.jpg');
 }
 
 function create(){
@@ -41,18 +45,28 @@ function create(){
     bricks.physicsBodyType = Phaser.Physics.ARCADE;
 
     var brick;
+    var inc = 0;
+    //var brick_array = new Array(60);
 
     for(var y = 0; y < 4; y++){
         for(var x = 0; x < 15; x++){
-            brick = bricks.create(120 + (x * 36), 100 + (y * 52), 'brick' + (y + 1));
-            brick.body.bounce.set(1);
-            brick.body.immovable = true;
+            inc = inc + 1;
+            brick_array[inc] = bricks.create(120 + (x * 36), 100 + (y * 52), 'brick' + (y + 1));
+            brick_array[inc].body.bounce.set(1);
+            brick_array[inc].body.immovable = true;
+            //brick_array[inc] = brick;
         }
     }
+    //array for index of bricks with power-ups
+
+    for(var i = 0; i < (brick_array.length*(15/100)); i++){
+    pu[i] = brick_array[Math.floor((Math.random() * brick_array.length) + 1)];
+    //pu[i] = Math.floor((Math.random()*brick_array.length) + 1);
+    }
+
 
     paddle = game.add.sprite(game.world.centerX, 400, 'paddle');
     paddle.anchor.setTo(0.5, 0.5);
-
 
 
     game.physics.enable(paddle, Phaser.Physics.ARCADE);
@@ -100,7 +114,10 @@ function update(){
     }else{
         game.physics.arcade.collide(ball, paddle, ballHitPaddle, null, this);
         game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
+        game.physics.arcade.collide(paddle, powerup, catchPowerUp, null, this);
     }
+
+    //paddle.scale.x += 0.01;
 }
 
 function releaseBall(){
@@ -138,6 +155,15 @@ function ballHitBrick (_ball, _brick) {
 
     scoreText.text = 'score: ' + score;
 
+    for(var i = 0; i < pu.length; i++){
+            if(_brick == pu[i]){
+                powerup = game.add.sprite(pu[i].x, pu[i].y, 'power-up');
+                powerup.scale.x = 0.1;
+                powerup.scale.y = 0.1
+                game.physics.enable(powerup, Phaser.Physics.ARCADE);
+                powerup.body.gravity.y = 50;
+            }
+    }
     //  Are they any bricks left?
     if (bricks.countLiving() == 0)
     {
@@ -182,4 +208,9 @@ function ballHitPaddle (_ball, _paddle) {
         _ball.body.velocity.x = 2 + Math.random() * 8;
     }
 
+}
+
+function catchPowerUp(_paddle, _powerup){
+    _powerup.kill();
+    _paddle.scale.x = 2.0;
 }
