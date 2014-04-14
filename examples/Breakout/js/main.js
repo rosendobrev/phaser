@@ -45,7 +45,7 @@ function create(){
         }
     }
 */
-    paddle = game.add.sprite(game.world.centerX, 400, 'paddle.png');
+    paddle = game.add.sprite(game.world.centerX, 400, 'assets/paddle.png');
     paddle.anchor.setTo(0.5, 0.5);
 
 
@@ -56,7 +56,7 @@ function create(){
     paddle.body.bounce.set(1);
     paddle.body.immovable = true;
 */
-    ball = game.add.sprite(game.world.centerX, game.world.centerY, 'ball.png');
+    ball = game.add.sprite(game.world.centerX, game.world.centerY, 'assets/ball.png');
     ball.anchor.set(0.5);
 /*
 paddle.y-16
