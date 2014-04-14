@@ -27,7 +27,7 @@ function preload(){
 function create(){
 
     //game.phisics.startSystem(Phaser.Phisics.ARCADE);
-    game.phisics.arcade.checkCollision.down = false;
+    //game.phisics.arcade.checkCollision.down = false;
 
     s = game.add.tileSprite(0, 0, 680, 480, 'background');
 /*
