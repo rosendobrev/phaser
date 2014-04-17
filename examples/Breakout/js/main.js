@@ -71,7 +71,6 @@ function create(){
 
     for(var i = 0; i < (brick_array.length*(15/100)); i++){
     pu[i] = brick_array[Math.floor((Math.random() * brick_array.length) + 1)];
-    //pu[i] = Math.floor((Math.random()*brick_array.length) + 1);
     }
 
 
@@ -128,7 +127,6 @@ function update(){
 
     }
 
-    //paddle.scale.x += 0.01;
 }
 
 function releaseBall(){
@@ -154,6 +152,7 @@ function ballLost(){
 
 function gameOver(){
     ball.body.velocity.setTo(0,0);
+    paddle.scale.x = 1.0;
 
     introText.text = 'Game Over, Neo..';
     introText.visible = true;
@@ -227,5 +226,5 @@ function ballHitPaddle (_ball, _paddle) {
 
 function catchPowerUp(_paddle, _powerup){
     _powerup.kill();
-    _paddle.scale.x = 2.0;
+    _paddle.scale.x = 2;
 }
