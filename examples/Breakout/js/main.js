@@ -76,6 +76,7 @@ function create(){
 
     paddle = game.add.sprite(game.world.centerX, 400, 'paddle');
     paddle.anchor.setTo(0.5, 0.5);
+    //paddle.scale.x = 2;
 
 
     game.physics.enable(paddle, Phaser.Physics.ARCADE);
@@ -109,13 +110,13 @@ function create(){
 function update(){
     paddle.body.x = game.input.x - 30;
 
-    if (paddle.x < 24)
+    if (paddle.body.x < 0)
     {
-        paddle.x = 24;
+        paddle.body.x = 0;
     }
-    else if (paddle.x > game.width - 24)
+    else if (paddle.body.x > game.width - 24)
     {
-        paddle.x = game.width - 24;
+        paddle.body.x = game.width - 24;
     }
 
     if(ballOnPaddle){
@@ -124,9 +125,7 @@ function update(){
         game.physics.arcade.collide(ball, paddle, ballHitPaddle, null, this);
         game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
         game.physics.arcade.collide(paddle, powerups, catchPowerUp, null, this);
-
     }
-
 }
 
 function releaseBall(){
@@ -141,7 +140,10 @@ function releaseBall(){
 function ballLost(){
     lives--;
     livesText.text = 'lives: ' + lives;
-    powerup.kill();
+    if(powerup){
+        powerup.kill();
+    }
+    //paddle.scale.x = 1.0;
     if(lives === 0){
         gameOver();
     }else{
@@ -152,14 +154,12 @@ function ballLost(){
 
 function gameOver(){
     ball.body.velocity.setTo(0,0);
-    paddle.scale.x = 1.0;
 
     introText.text = 'Game Over, Neo..';
     introText.visible = true;
 }
 
 function ballHitBrick (_ball, _brick) {
-
 
     _brick.kill();
 
@@ -169,7 +169,6 @@ function ballHitBrick (_ball, _brick) {
 
     for(var i = 0; i < pu.length; i++){
             if(_brick == pu[i]){
-                //powerup = game.add.sprite(pu[i].x, pu[i].y, 'power-up');
 
                 powerup = powerups.create(pu[i].x, pu[i].y, 'power-up');
                 powerup.scale.x = 0.1;
@@ -191,7 +190,7 @@ function ballHitBrick (_ball, _brick) {
         ball.body.velocity.set(0);
         ball.x = paddle.x + 16;
         ball.y = paddle.y - 16;
-        ball.animations.stop();
+        //ball.animations.stop();
 
         //  And bring the bricks back from the dead :)
         bricks.callAll('revive');
@@ -225,6 +224,8 @@ function ballHitPaddle (_ball, _paddle) {
 }
 
 function catchPowerUp(_paddle, _powerup){
+    var a;
     _powerup.kill();
     _paddle.scale.x = 2;
+    game.physics.enable(_paddle, Phaser.Physics.ARCADE);
 }
