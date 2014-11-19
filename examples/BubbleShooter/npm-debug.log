@@ -1,0 +1,130 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.10.12/bin/node',
+1 verbose cli   '/usr/local/Cellar/node/0.10.12/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'typescript',
+1 verbose cli   '-g' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.12
+4 verbose cache add [ 'typescript', null ]
+5 verbose cache add name=undefined spec="typescript" args=["typescript",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'typescript',
+6 verbose parsed url   path: 'typescript',
+6 verbose parsed url   href: 'typescript' }
+7 silly lockFile fb9da861-typescript typescript
+8 verbose lock typescript /Users/rosendobrev/.npm/fb9da861-typescript.lock
+9 silly lockFile fb9da861-typescript typescript
+10 silly lockFile fb9da861-typescript typescript
+11 verbose addNamed [ 'typescript', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile b598c0ef-typescript typescript@
+14 verbose lock typescript@ /Users/rosendobrev/.npm/b598c0ef-typescript.lock
+15 silly addNameRange { name: 'typescript', range: '*', hasData: false }
+16 verbose url raw typescript
+17 verbose url resolving [ 'https://registry.npmjs.org/', './typescript' ]
+18 verbose url resolved https://registry.npmjs.org/typescript
+19 info trying registry request attempt 1 at 14:16:45
+20 verbose etag "4082Y6Z8F46LTMWUOGPPISTBF"
+21 http GET https://registry.npmjs.org/typescript
+22 http 304 https://registry.npmjs.org/typescript
+23 silly registry.get cb [ 304,
+23 silly registry.get   { date: 'Sat, 31 May 2014 11:16:45 GMT',
+23 silly registry.get     server: 'Apache',
+23 silly registry.get     via: '1.1 varnish',
+23 silly registry.get     'last-modified': 'Sat, 31 May 2014 11:16:45 GMT',
+23 silly registry.get     'cache-control': 'max-age=1',
+23 silly registry.get     etag: '"4082Y6Z8F46LTMWUOGPPISTBF"',
+23 silly registry.get     'x-served-by': 'cache-lo81-LHR',
+23 silly registry.get     'x-cache': 'MISS',
+23 silly registry.get     'x-cache-hits': '0',
+23 silly registry.get     'x-timer': 'S1401535005.568627,VS0,VE150',
+23 silly registry.get     vary: 'Accept',
+23 silly registry.get     'content-length': '0',
+23 silly registry.get     'keep-alive': 'timeout=10, max=50',
+23 silly registry.get     connection: 'Keep-Alive' } ]
+24 verbose etag typescript from cache
+25 silly addNameRange number 2 { name: 'typescript', range: '*', hasData: true }
+26 silly addNameRange versions [ 'typescript',
+26 silly addNameRange   [ '0.8.0',
+26 silly addNameRange     '0.8.1',
+26 silly addNameRange     '0.8.1-1',
+26 silly addNameRange     '0.8.2',
+26 silly addNameRange     '0.8.3',
+26 silly addNameRange     '0.9.0',
+26 silly addNameRange     '0.9.0-1',
+26 silly addNameRange     '0.9.1',
+26 silly addNameRange     '0.9.1-1',
+26 silly addNameRange     '0.9.5',
+26 silly addNameRange     '0.9.7',
+26 silly addNameRange     '1.0.0',
+26 silly addNameRange     '1.0.1' ] ]
+27 verbose addNamed [ 'typescript', '1.0.1' ]
+28 verbose addNamed [ '1.0.1', '1.0.1' ]
+29 silly lockFile 22c3f0dc-typescript-1-0-1 typescript@1.0.1
+30 verbose lock typescript@1.0.1 /Users/rosendobrev/.npm/22c3f0dc-typescript-1-0-1.lock
+31 silly lockFile 22c3f0dc-typescript-1-0-1 typescript@1.0.1
+32 silly lockFile 22c3f0dc-typescript-1-0-1 typescript@1.0.1
+33 silly lockFile b598c0ef-typescript typescript@
+34 silly lockFile b598c0ef-typescript typescript@
+35 silly resolved [ { name: 'typescript',
+35 silly resolved     author: { name: 'Microsoft Corp.' },
+35 silly resolved     homepage: 'http://typescriptlang.org/',
+35 silly resolved     version: '1.0.1',
+35 silly resolved     licenses: [ [Object] ],
+35 silly resolved     description: 'TypeScript is a language for application scale JavaScript development',
+35 silly resolved     keywords: [ 'TypeScript', 'Microsoft', 'compiler', 'language', 'javascript' ],
+35 silly resolved     bugs: { url: 'http://typescript.codeplex.com/workitem/list/basic' },
+35 silly resolved     repository: { type: 'git', url: 'https://git01.codeplex.com/typescript' },
+35 silly resolved     preferGlobal: true,
+35 silly resolved     main: './bin/typescript.js',
+35 silly resolved     bin: { tsc: './bin/tsc' },
+35 silly resolved     engines: { node: '>=0.8.0' },
+35 silly resolved     devDependencies: { jake: 'latest' },
+35 silly resolved     readme: '# TypeScript\r\n\r\nScalable JavaScript development with types, classes and modules.\r\n\r\n## Install\r\n\r\n  npm install -g typescript\r\n\r\n## Usage\r\n\r\n  tsc hello.ts\r\n  \r\n\r\n## Build\r\n\r\n1.  Install Node if you haven\'t already (http://nodejs.org/)\r\n2.  Install Jake, the tool we use to build our compiler (https://github.com/mde/jake). To do this, run "npm install -g jake".\r\n3.  To use jake, run one of the following commands: \r\n    - jake local - This builds the compiler. The output is in built/local in the public directory \r\n    - jake clean - deletes the build compiler \r\n    - jake LKG - This replaces the LKG (last known good) version of the compiler with the built one.\r\n        - This is a bootstrapping step to be executed whenever the built compiler reaches a stable state.\r\n    - jake tests - This builds the test infrastructure, using the built compiler. \r\n    - jake runtests - This runs the tests, using the built compiler and built test infrastructure. \r\n        - You can also override the host or specify a test for this command. Use host=<hostName> or tests=<testPath>. \r\n    - jake baseline-accept - This replaces the baseline test results with the results obtained from jake runtests. \r\n    - jake -T lists the above commands. \r\n',
+35 silly resolved     readmeFilename: 'README.txt',
+35 silly resolved     _id: 'typescript@1.0.1',
+35 silly resolved     _from: 'typescript@' } ]
+36 info install typescript@1.0.1 into /usr/local/Cellar/node/0.10.12/lib
+37 info installOne typescript@1.0.1
+38 info /usr/local/Cellar/node/0.10.12/lib/node_modules/typescript unbuild
+39 info preuninstall typescript@1.0.1
+40 info uninstall typescript@1.0.1
+41 verbose true,/usr/local/Cellar/node/0.10.12/lib/node_modules,/usr/local/Cellar/node/0.10.12/lib/node_modules unbuild typescript@1.0.1
+42 verbose /usr/local/Cellar/node/0.10.12/bin,[object Object] binRoot
+43 info postuninstall typescript@1.0.1
+44 info /usr/local/Cellar/node/0.10.12/lib/node_modules/typescript unbuild
+45 info preuninstall typescript@1.0.1
+46 info uninstall typescript@1.0.1
+47 verbose true,/usr/local/Cellar/node/0.10.12/lib/node_modules,/usr/local/Cellar/node/0.10.12/lib/node_modules unbuild typescript@1.0.1
+48 verbose /usr/local/Cellar/node/0.10.12/bin,[object Object] binRoot
+49 info postuninstall typescript@1.0.1
+50 error error rolling back Error: EACCES, unlink '/usr/local/Cellar/node/0.10.12/lib/node_modules/typescript'
+50 error error rolling back  typescript@1.0.1 { [Error: EACCES, unlink '/usr/local/Cellar/node/0.10.12/lib/node_modules/typescript']
+50 error error rolling back   errno: 3,
+50 error error rolling back   code: 'EACCES',
+50 error error rolling back   path: '/usr/local/Cellar/node/0.10.12/lib/node_modules/typescript' }
+51 error Error: EACCES, unlink '/usr/local/Cellar/node/0.10.12/lib/node_modules/typescript'
+51 error  { [Error: EACCES, unlink '/usr/local/Cellar/node/0.10.12/lib/node_modules/typescript']
+51 error   errno: 3,
+51 error   code: 'EACCES',
+51 error   path: '/usr/local/Cellar/node/0.10.12/lib/node_modules/typescript' }
+52 error Please try running this command again as root/Administrator.
+53 error System Darwin 13.1.0
+54 error command "/usr/local/Cellar/node/0.10.12/bin/node" "/usr/local/Cellar/node/0.10.12/bin/npm" "install" "typescript" "-g"
+55 error cwd /Users/rosendobrev/WebstormProjects/BubbleShooter
+56 error node -v v0.10.12
+57 error npm -v 1.4.9
+58 error path /usr/local/Cellar/node/0.10.12/lib/node_modules/typescript
+59 error code EACCES
+60 error errno 3
+61 error stack Error: EACCES, unlink '/usr/local/Cellar/node/0.10.12/lib/node_modules/typescript'
+62 verbose exit [ 3, true ]
