@@ -2,3 +2,5 @@
 
 
 A simple Breakout game made with Phaser framework. That was my very first game made ever.
+
+Thank you, Atanas Chervarov.
